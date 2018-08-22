@@ -1,6 +1,19 @@
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component("client")
+@Scope("singleton")
 public class Client {
-    String id;
+    @Value("Alexander Gradsky")
     String fullName;
+
+    String id;
+    String greeting;
+
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
+    }
 
     public Client() {
         id = null;

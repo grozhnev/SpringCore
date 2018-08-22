@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
+    <import resource="loggers.xml"/>
+
+
+    <bean id="client" class="Client">
+        <constructor-arg value="1" index="0"/>
+        <constructor-arg value="Vasya"/>
+        <property name="greeting" value="Privet!"/>
+    </bean>
 
     <bean id="app" class="App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="logger"/>
+        <constructor-arg ref="consoleLogger"/>
+        <!--<constructor-arg>-->
+            <!--<map>-->
+                <!--<entry key="INFO" value-ref="consoleLogger"/>-->
+                <!--<entry key="ERROR" value-ref="combinedLogger"/>-->
+            <!--</map>-->
+        <!--</constructor-arg>-->
+
     </bean>
-    <bean id="client" class="Client">
-        <constructor-arg value="1" index="0"/>
-        <constructor-arg value="Sam"/>
+
+    <bean id="event" class="Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
     </bean>
-    <bean id="logger" class="ConsoleEventLogger"/>
+    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+
+
 
 </beans>
