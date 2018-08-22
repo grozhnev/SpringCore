@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-package PACKAGE_NAME;
-
-public class CombinedEventLogger {
-=======
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +18,4 @@ public class CombinedEventLogger implements EventLogger {
             logger.logEvent(event);
         }
     }
->>>>>>> Stashed changes
 }

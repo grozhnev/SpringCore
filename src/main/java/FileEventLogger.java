@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-package PACKAGE_NAME;
-
-public class FileEventLogger {
-=======
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -12,6 +8,7 @@ import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 
+@SuppressWarnings("ALL")
 @Service("fileLogger")
 @Scope("prototype")
 public class FileEventLogger implements EventLogger {
@@ -19,8 +16,11 @@ public class FileEventLogger implements EventLogger {
     String fileName;
     File file;
 
-    public FileEventLogger(String fileName) {
-        this.fileName = fileName;
+//    public FileEventLogger(String fileName) {
+//    }
+
+    public FileEventLogger(String s) {
+        this.fileName = s;
     }
 
     @PostConstruct
@@ -41,5 +41,7 @@ public class FileEventLogger implements EventLogger {
             e.printStackTrace();
         }
     }
->>>>>>> Stashed changes
 }
+
+
+
